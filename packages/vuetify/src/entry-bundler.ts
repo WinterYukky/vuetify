@@ -15,3 +15,10 @@ export {
   directives,
 }
 export * from './composables'
+
+type globalComponents = {
+  [P in keyof typeof components]: typeof components[P]
+}
+declare module '@vue/runtime-core' {
+  export interface GlobalComponents extends globalComponents {}
+}
